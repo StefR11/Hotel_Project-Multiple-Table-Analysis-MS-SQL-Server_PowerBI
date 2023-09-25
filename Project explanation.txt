@@ -1,0 +1,24 @@
+start exploring data by using sql
+
+EXECUTING THE QUERY
+
+DO SOME EXPOLORATORY DATA ANALYSIS USING SQL. HE ANSWDERED THE FIRST QUESTION 'IS THE HOTEL REVENUE GROWING?'
+
+This post is about the first part of the (guided) project I have recently built. I am going to develop a DB to visualise Hotel Booking Data in order to present it to my stakeholders.
+1st Question: Is our Hotel Revenue growing by year? We have two hotel types so it would be good to segment revenue by hotel type.
+
+2nd Question: Should we increase our parking lot size? We want to understand If there is a trend in guest with personal cars.
+
+3rd Question: What Trends can we see in the data? Focus on average daily rate and guest to explore seasonality.
+On the below you can see that I started doing some exploratory data using SQL to answer the first question.
+By using UNION, the mentor of the project appended all of the tables, though he lost around 40,000 rows. Better in this case If he had used UNION ALL which captures all data including duplicates. Afterwards I created a temporary table called Hotels so as to calculate the Total Revenue broken down by Hotel type and year. The last step of the project as far as querying in SQL server is concerned is to left-join the market_segment and meal cost tables with the temporary table called hotels in order to have all the data into one table and to finally import the developed sql query into Power BI.
+
+That's the second and final part of this simple and effective project. After importing the sql developed query into Power BI, the mentor of this project calculated the Total Revenue in the query editor by using the custom column function. There is nothing wrong with that, but I preferred to create the explicit measure as follow given an aggregation is to be calculated and also it gives us much more flexibility when filtering. Total_Revenue = SUMX(Query1, (Query1[stays_in_week_nights] + Query1[stays_in_weekend_nights]) * Query1[adr] * (1-Query1[Discount]))
+The following 3 explicit measures I have created helped me give the answer to my stakeholders' first question
+Average_adr = AVERAGE(Query1[adr])
+Total_nights = SUM(Query1[stays_in_week_nights]) + SUM(Query1[stays_in_weekend_nights])
+Average_Discount = AVERAGE(Query1[Discount]) and then format as a %.
+The below dashboard shows 2 slicers and 4 cards relating to the aforementioned measures as well as a Line Chart with Total Revenue broken down by reservation_status_date and segmented by hotel type.
+The second question is 'Should we increase our parking lot size'? The stakeholders want to understand If there is a trend in guests with personal cars. To fulfil their expectation I created another card showing 'required_car_parking_spaces' on fields, a Donut Chart showing Total Revenue by hotel_type and a Matrix to reflect Total Revenue and Parking Percentage measure broken down by year and required car parking spaces Parking Percentage = SUM(Query1[required_car_parking_spaces]) / [Total_nights]
+As you can see from the Matrix, there does not seem to be a lot of evidence to increase the parking lot size.
+

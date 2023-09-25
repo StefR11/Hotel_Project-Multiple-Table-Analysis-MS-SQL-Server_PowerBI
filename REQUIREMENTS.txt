@@ -1,0 +1,17 @@
+DESKTOP-BFV0DOU\SQLEXPRESS
+I M GOING TO DEVELOP A DATABASE TO ANALYSE  VISUALISE HOTEL BOOKING DATA.
+BUILD A VISUAL DATA STORY OR DASHBOARD USING POWER BI TO PRESENT TO YOUR STAKEHOLDERS.
+
+1ST QUESTION: IS OUR HOTEL REVENUE GROWING BY YEAR?. We have two hotel types so it would be good to segment revenue by hotel type.
+
+2ST QUESTION: Should we increase our parking lot size? We want to understand If there is a trend in guest with personal cars.
+
+3ST QUESTION: What Trends can we see in the data? Focus on average daily rate and guest to explore seasonality.
+
+DATA ANALYSIS PROJECT PIPELINE
+
+* Build a database 
+* Develop the SQL query
+* Connect Power BI to the Database 
+* Visualise
+* Summarize our Findings
